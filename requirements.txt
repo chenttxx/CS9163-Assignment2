@@ -1,0 +1,4 @@
+flask
+pytest
+tox
+tox-travis
