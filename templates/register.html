@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+{% block title %}SpellCheck_Register{% endblock %}
+{% block content %}
+
+<div class="container" style="background-color: beige; border-style: double; border-radius: 10px;">
+
+
+<div class="col-md-4">
+
+    <form action="" method="post">
+        <input SIZE=24 id="uname" type="text" placeholder="Username" name="uname" value="{{ request.form.uname }}">
+        <input SIZE=24 id="pword" type="password" placeholder="Password" name="pword" value="{{ request.form.pword }}">
+        <input SIZE=24 id="2fa" type="password" placeholder="Two Factor Authentication" name="2fa" value="{{ request.form.auth }}">
+        <button class="registerbutton" type="submit">Register</button>
+    </form>
+
+    {% if id %}
+    <p class="col-md-4" id="success"> {{ id }} </p>
+    {% endif %}
+
+
+</div>
+
+<div>
+
+{% endblock %}
+
