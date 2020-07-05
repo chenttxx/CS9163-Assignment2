@@ -28,7 +28,7 @@ def register():
             pword = request.form['pword']
             twofactor = request.form['2fa']
 
-            if (uname is None) or (pword is None):
+            if not uname or not pword:
                 message = "Registration failure."
                 return render_template("register.html", id=message)
             if uname not in db:
