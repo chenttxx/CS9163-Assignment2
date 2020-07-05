@@ -9,6 +9,7 @@
     <div class="col-md-4">
 
     <form action="/spell_check" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
       <input id="inputtext" type="text" SIZE=40 placeholder="Input" name="inputtext" value="{{ request.form.inputtext }}">
       <button id="submitbutton" type="submit">submit</button>
     </form>
