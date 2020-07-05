@@ -28,7 +28,7 @@ def register():
             pword = request.form['pword']
             twofactor = request.form['2fa']
 
-            if (uname is None) or (pword is None) or (twofactor is None):
+            if (uname is None) or (pword is None):
                 message = "Registration failure."
                 return render_template("register.html", id=message)
             if uname not in db:
@@ -87,14 +87,14 @@ def spell_check():
         textout = None
         if request.method == 'POST':
             textout = request.form["inputtext"]
-            with open("textout.txt", "w") as f:
-                f.write(textout)
+            f = open("textout.txt", "w"):
+            f.write(textout)
+            f.close()
   
             misspelled = subprocess.check_output(["./a.out", "textout.txt", "wordlist.txt"])
             misspelled = misspelled.decode('utf-8').strip()
             misspelled = misspelled.replace("\n", ", ")
-          
-            f.close()
+
             os.remove('textout.txt')
         return render_template('spell_check.html', misspelled=misspelled, textout=textout)
     else:
