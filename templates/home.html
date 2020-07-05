@@ -13,24 +13,20 @@
     
     
         <div class="container" style="background-color: aquamarine; border-style: double; border-radius: 20px;">
-
-            <div class="row">
     
-                <div class="col-md-4">
-                <h4>Spell Check - Tianxiang Chen</h4>
-                
-                <h5>                
-                <a href="/login"><br> Login</a><br>
-                <a href="/register"><br>Register</a><br>
-                {% if session['username'] %}
-                <a href="/spell_check"><br>Spell Check</a><br>
-                <a href="/logout"><br>Log out</a>
-                {% endif %}
-                </h5>
+            <div class="col-md-4">
+            <h4>Spell Check - Tianxiang Chen</h4>
 
-                </div>
-    
-           </div>
+            <h5>                
+            <a href="/login"><br> Login</a><br>
+            <a href="/register"><br>Register</a><br>
+            {% if session['username'] %}
+            <a href="/spell_check"><br>Spell Check</a><br>
+            <a href="/logout"><br>Log out</a>
+            {% endif %}
+            </h5>
+
+            </div>
   
         </div>
 
