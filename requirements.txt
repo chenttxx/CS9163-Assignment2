@@ -2,3 +2,4 @@ flask
 pytest
 tox
 tox-travis
+werkzeug==0.16.0
