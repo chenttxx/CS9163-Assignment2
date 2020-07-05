@@ -7,6 +7,7 @@
     <div class="col-md-4">
      
             <form action="/login" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <input id="uname" SIZE=24 type="text" placeholder="Username" name="uname" value="{{ request.form.uname }}">
                 <input id="pword" SIZE=24 type="password" placeholder="Password" name="pword" value="{{ request.form.pword }}">
                 <input id="2fa" SIZE=24 type="password" placeholder="2fa" name="2fa" value="{{ request.form.auth }}">
