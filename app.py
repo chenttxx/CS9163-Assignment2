@@ -1,13 +1,13 @@
-from flask import Flask, request, session, render_template, redirect, url_for
+from flask import Flask, request, session, render_template, redirect
 import os
 import subprocess
-##from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect
 
 def create_app():
     app = Flask(__name__)
     db = {}
     dict = "wordlist.txt"
-    ##csrf = CSRFProtect(app)
+    csrf = CSRFProtect(app)
     app.secret_key = os.urandom(24)
 
 
@@ -98,14 +98,16 @@ def create_app():
                 os.remove('textout.txt')
             return render_template('spell_check.html', misspelled=misspelled, textout=textout)
         else:
-            return redirect(url_for("home"))
+            return render_template("home.html")
+        
     @app.route('/logout')
     def logout():
         session.clear()
         loggedout = None
         loggedout = "The user has logged out."
         return render_template('home.html', id=loggedout)
-
+    return app
+    
 if __name__ == '__main__':
     app.create_app()
     app.run()
