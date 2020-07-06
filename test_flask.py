@@ -1,18 +1,9 @@
-"""
-You can auto-discover and run all tests with this command:
-
-    $ pytest
-
-Documentation:
-
-* https://docs.pytest.org/en/latest/
-* https://docs.pytest.org/en/latest/fixture.html
-* http://flask.pocoo.org/docs/latest/testing/
-"""
-
 import pytest
-
 import app as flask_app
+import requests
+from bs4 import BeautifulSoup
+
+SITE = "http://localhost:5000/"
 
 @pytest.fixture
 def app():
@@ -21,23 +12,21 @@ def app():
     return app.test_client()
 
 
-def test_home(app):
-    res = app.get("/")
-    # print(dir(res), res.status_code)
+def test_home_page(app):
+    res = app.get(SITE)
     assert res.status_code == 200
 
-def test_register(app):
-    res = app.get("/register")
-    # print(dir(res), res.status_code)
+def test_register_page(app):
+    res = app.get(SITE + "register")
     assert res.status_code == 200
 
-def test_login(app):
-    res = app.get("/login")
-    # print(dir(res), res.status_code)
+def test_login_page(app):
+    res = app.get(SITE + "login")
     assert res.status_code == 200
 
-def test_spell_check(app):
-    res = app.get("/spellcheck")
-    # print(dir(res), res.status_code)
-    assert res.status_code == 404
+def test_spellcheck_page(app):
+    res = app.get(SITE + "spellcheck")
+    assert res.status_code == 200
 
+if __name__=="__main__":
+    
