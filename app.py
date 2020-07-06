@@ -87,7 +87,7 @@ def create_app():
             textout = None
             if request.method == 'POST':
                 textout = request.form["inputtext"]
-                f = open("textout.txt", "w"):
+                f = open("textout.txt", "w")
                 f.write(textout)
                 f.close()
 
