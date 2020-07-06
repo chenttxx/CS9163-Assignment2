@@ -19,7 +19,8 @@ def test_home_page(app):
 def test_register_page(app):
     res = app.get(SITE + "register")
     assert res.status_code == 200
-
+    response = app.post(SITE+'register', data = {'uname': 'user1', 'pword' = 'user1', '2fa' = '1234567890'})
+    assert response.status_code == 200
 def test_login_page(app):
     res = app.get(SITE + "login")
     assert res.status_code == 200
