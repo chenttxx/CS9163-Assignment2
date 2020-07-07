@@ -13,21 +13,27 @@ def app():
 
 
 def test_home_page(app):
-    res = app.get(SITE)
-    assert res.status_code == 200
-
-def test_register_page(app):
-    res = app.get(SITE + "register")
-    assert res.status_code == 200
-    response = app.post(SITE+'register', data = {'uname': 'user1', 'pword': 'user1', '2fa': '1234567890'})
+    response = app.get(SITE)
     assert response.status_code == 200
-def test_login_page(app):
-    res = app.get(SITE + "login")
-    assert res.status_code == 200
 
-def test_spellcheck_page(app):
-    res = app.get(SITE + "spellcheck")
-    assert res.status_code == 200
+def test_register_login_spellcheck(app):
+    response = app.get(SITE + "register")
+    assert response.status_code == 200
+    app.post(SITE + 'register', data = {'uname': 'user1', 'pword': 'user1', '2fa': '1234567890'})
+    response = app.get(SITE + "register")
+    assert response.status_code == 200
+    
+    app.post(SITE + 'login', data = {'uname': 'user1', 'pword': 'user1', '2fa': '1234567890'})
+    response = app.get(SITE + "login")
+    assert response.status_code == 200
+
+    app.get(SITE + "spell_check", data = {'inputtext': 'hello what sdkasj okay ajshd'})
+    response = app.get(SITE + "spell_check")
+    assert response.status_code == 200
+    
+def test_logout(app):
+    response = app.get(SITE + "logout")
+    assert response response.status_code == 200
 
 if __name__=="__main__":
     unittest.main()
