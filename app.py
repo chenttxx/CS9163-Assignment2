@@ -74,7 +74,7 @@ def create_app():
                     result = "Incorrect username or password."
                 else:
                     hashedPword = bcrypt.hashpw(pword.encode('utf-8'), salt)
-                    hashedtwofact = bcrypt.hashpw(twofactor.encode('utf-8'),salt)
+                    hashedtwofac = bcrypt.hashpw(twofactor.encode('utf-8'),salt)
                     user = db.get(uname, None)
                     if hashedPword != user['pword']:
                         result = "Incorrect username or password."
