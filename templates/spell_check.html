@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+{% block title %}SpellCheck{% endblock %}
+{% block content %}
+
+<div class="container" style="background-color: beige; border-style: double; border-radius: 10px;">
+
+  <div class="row">
+
+    <div class="col-md-4">
+
+    <form action="/spell_check" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <input id="inputtext" type="text" SIZE=40 placeholder="Input" name="inputtext" value="{{ request.form.inputtext }}">
+      <button id="submitbutton" type="submit">submit</button>
+    </form>
+
+      <br>
+    {% if textout %}
+      <p class="col-md-4" id="textout">Textout: {{ textout }} </p>
+    {% endif %}
+    
+    {% if misspelled %}
+      <p class="col-md-4" id="misspelled">Misspelled Words: {{ misspelled }} </p>
+    {% endif %}
+
+    </div>
+
+  </div>
+
+</div>
+
+
+{% endblock %}
