@@ -45,7 +45,14 @@ def create_app():
                     if not(48<=ord(c)<=57 or 65<=ord(c)<=90 or 97<=ord(c)<=122):
                         message = "The username is invalid."
                         return render_template("register.html", id=message)
-
+                for p in pword:
+                    if not 0<=ord(p)<=127:
+                        message = "The password is invalid."
+                        return render_template("register.html", id=message)
+                for t in twofactor:
+                    if not 0<=ord(t)<=127:
+                        message = "The two-factor authentication is invalid."
+                        return render_template("register.html", id=message)
                 if uname not in db:
                     hashedPword = bcrypt.hashpw(pword.encode('utf-8'), salt)
                     hashedtwofac = bcrypt.hashpw(twofactor.encode('utf-8'), salt)
