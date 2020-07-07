@@ -35,9 +35,10 @@ def create_app():
                 if len(uname) > 20 or len(pword) > 20:
                     message = "The username or password length is invalid."
                     return render_template("register.html", id=message)
-                if isinstance(uname, unicode):
-                    message = "The username is invalid."
-                    return render_template("register.html", id=message)
+                for c in uname:
+                    if not(48<=ord(c)<=57 or 65<=ord(c)<=90 or 97<=ord(c)<=122):
+                        message = "The username is invalid."
+                        return render_template("register.html", id=message)
 
                 if uname not in db:
                     hashedPword = bcrypt.hashpw(pword.encode('utf-8'), salt)
