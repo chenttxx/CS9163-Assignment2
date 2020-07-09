@@ -42,7 +42,7 @@ def create_app():
                     message = "The username or password length is invalid."
                     return render_template("register.html", id=message)
                 for c in uname:
-                    if not(48<=ord(c)<=57 or 65<=ord(c)<=90 or 97<=ord(c)<=122):
+                    if not(46<=ord(c)<=57 or 64<=ord(c)<=90 or 97<=ord(c)<=122):
                         message = "The username is invalid."
                         return render_template("register.html", id=message)
                 for p in pword:
